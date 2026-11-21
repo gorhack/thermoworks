@@ -1,0 +1,31 @@
+{
+  "pluginAlias": "ThermoworksPlugin",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "ThermoWorks Plugin"
+      },
+      "apiKey": {
+        "title": "API Key",
+        "type": "string",
+        "required": true,
+        "pattern": "^[A-Za-z0-9]*$",
+        "description": "Found at https://cloud.thermoworks.com/account Integrations"
+      },
+      "delay": {
+        "title": "Delay (in seconds)",
+        "type": "number",
+        "required": false,
+        "placeholder": "5",
+        "pattern": "^[0-9]*$",
+        "description": "Add an additional delay if your Homekit readings are behind your ThermoWorks readings."
+      }
+    }
+  }
+}
