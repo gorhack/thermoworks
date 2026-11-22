@@ -24,8 +24,7 @@
     },
     {
       "name": "homebridge-thermoworks",
-      "platform": "ThermoworksPlugin",
-      "apiKey": "twk_8a1ffa310938dc70ac1a45f0_u94oC-zin1zxPMwdtnt8Xk9BVljU1TWe3v_iR_4mZo4"
+      "platform": "ThermoworksPlugin"
     }
   ],
   "accessories": []
