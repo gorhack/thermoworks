@@ -1,7 +1,7 @@
 {
   "displayName": "Thermoworks",
   "name": "homebridge-thermoworks",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Unofficial ThermoWorks homebridge plugin.",
   "homepage": "https://github.com/gorhack/thermoworks",
   "license": "Apache-2.0",
