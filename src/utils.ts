@@ -80,8 +80,8 @@ export const requestThermoworksApi = async (apiUrl: string, apiKey: string, etag
   }
   if (res.status !== 200) {
     // catch all non-200 error codes (400, 500, etc)
-    throw new Error(formatErrorMessage(JSON.stringify(res),
-      `Received a bad response code ${apiUrl} (not '200', '304', '401', or '429') resulting in the inability to request your device(s). ` +
+    throw new Error(formatErrorMessage(res.statusText,
+      `Received a bad response code ${res.status ?? '' } ${apiUrl} (not '200', '304', '401', or '429') resulting in the inability to request your device(s). ` +
         'Check the API at https://cloud.thermoworks.com/api/docs/'));
   }
   const jsonData = (await res.json());

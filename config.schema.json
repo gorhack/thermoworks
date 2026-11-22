@@ -14,7 +14,7 @@
       "apiKey": {
         "title": "API Key",
         "type": "string",
-        "pattern": "^[A-Za-z0-9]*$",
+        "pattern": "^[A-Za-z0-9-_]*$",
         "description": "Found at https://cloud.thermoworks.com/account Integrations"
       },
       "delay": {

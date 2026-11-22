@@ -112,20 +112,18 @@ export class ThermoworksHomebridgePlatform implements DynamicPlatformPlugin {
           this.log.warn(`ThermoWorks device for accessory ${uuid} was not returned by the API.`);
         }
       });
+      const pollDelay = this.getNextPollDelay();
       this.devices.forEach(device => {
         this.log.info(`Device ${device.id} -- ${device.label}/${device.model}. ` +
           `It has ${device.channels.length} sensor(s). Last checkin ${device.lastSeen ?? 'unknown'}. ` +
-          `Next connection ${device.nextExpectedConnection ?? 'unknown'} with an interval of ${device.transmitIntervalSeconds} seconds.`);
+          `Next connection ${device.nextExpectedConnection ?? Math.floor(pollDelay / 1000) + 's'} ` +
+          `with a regular interval of ${device.transmitIntervalSeconds} seconds.`);
         device.channels.forEach(channel => {
-          this.log.info(`Sensor ${channel.id} -- ${channel.type} - ${channel.label ?? '[null]'}: ` +
+          this.log.debug(`Sensor ${channel.id} -- ${channel.type} - ${channel.label ?? '[null]'}: ` +
           `${channel.value ?? ''} ${channel.units ?? ''}. Device is ${channel.enabled ? 'enabled' : 'disabled'} ` +
           `and status is ${channel.status ?? 'unknown'}. Last seen ${channel.lastSeen ?? 'unknown'}.`);
         });
       });
-
-      const pollDelay = this.getNextPollDelay();
-      this.log.info(`Next poll in ${Math.floor(pollDelay / 1000)}s.`);
-
       this.schedulePoll(pollDelay);
     } catch (err) {
       this.accessoryHandlers.forEach(handler => handler.markFaulted());

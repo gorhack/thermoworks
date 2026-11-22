@@ -55,7 +55,9 @@ export class ThermoworksAccessory {
         service.getCharacteristic(this.platform.Characteristic.CurrentRelativeHumidity)
           .onGet(() => this.handleReadingGet(channel.id));
       } else {
+        // TODO Adjust maxValue based on model (i.e. node with probe [-50C, 70C])
         service.getCharacteristic(this.platform.Characteristic.CurrentTemperature)
+          .setProps({ minValue: -270, maxValue: 1000, minStep: 0.1 })
           .onGet(() => this.handleReadingGet(channel.id));
       }
       service.getCharacteristic(this.platform.Characteristic.StatusFault)

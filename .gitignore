@@ -123,5 +123,4 @@ dist
 .idea
 
 # homebridge test
-test/hbConfig/persist/*
-test/hbConfig/accessories/*
+test/hbConfig/
