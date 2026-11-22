@@ -42,6 +42,9 @@
     "typescript-eslint": "^8.67.0"
   },
   "files": [
-    "!test"
+    "dist",
+    "config.schema.json",
+    "README.md",
+    "LICENSE"
   ]
 }
