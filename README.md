@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 <a href="https://www.npmjs.com/package/homebridge-thermoworks"><img title="npm version" src="https://badgen.net/npm/v/homebridge-thermoworks?label=stable"></a>
-<a href="https://www.npmjs.com/package/homebridge-thermoworksk"><img title="npm downloads" src="https://badgen.net/npm/dt/homebridge-thermoworks"></a>
+<a href="https://www.npmjs.com/package/homebridge-thermoworks"><img title="npm downloads" src="https://badgen.net/npm/dt/homebridge-thermoworks"></a>
 <a href="https://github.com/gorhack/thermoworks/actions/workflows/build.yml"><img title="Node Build" src="https://github.com/gorhack/thermoworks/actions/workflows/build.yml/badge.svg"></a>
 </p>
 
