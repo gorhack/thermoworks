@@ -4,8 +4,13 @@
   "singular": true,
   "schema": {
     "type": "object",
-    "required": ["apiKey"],
+    "required": ["name","apiKey"],
     "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "ThermoWorks Plugin"
+      },
       "apiKey": {
         "title": "API Key",
         "type": "string",
