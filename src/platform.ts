@@ -83,6 +83,7 @@ export class ThermoworksHomebridgePlatform implements DynamicPlatformPlugin {
 
     try {
       const response = await requestThermoworksApi(this.thermoworksApiUrl + 'devices', this.config.apiKey, this.etag);
+      this.log.debug(JSON.stringify(response));
       if (response.status === 401) {
         this.log.error('ThermoWorks API authentication failed. Check the configured API key.');
         this.pollingStopped = true;
@@ -119,7 +120,7 @@ export class ThermoworksHomebridgePlatform implements DynamicPlatformPlugin {
           `Next connection ${device.nextExpectedConnection ?? Math.floor(pollDelay / 1000) + 's'} ` +
           `with a regular interval of ${device.transmitIntervalSeconds} seconds.`);
         device.channels.forEach(channel => {
-          this.log.debug(`Sensor ${channel.id} -- ${channel.type} - ${channel.label ?? '[null]'}: ` +
+          this.log.info(`Sensor ${channel.id} -- ${channel.type} - ${channel.label ?? '[null]'}: ` +
           `${channel.value ?? ''} ${channel.units ?? ''}. Device is ${channel.enabled ? 'enabled' : 'disabled'} ` +
           `and status is ${channel.status ?? 'unknown'}. Last seen ${channel.lastSeen ?? 'unknown'}.`);
         });

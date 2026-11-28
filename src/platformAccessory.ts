@@ -56,6 +56,7 @@ export class ThermoworksAccessory {
           .onGet(() => this.handleReadingGet(channel.id));
       } else {
         // TODO Adjust maxValue based on model (i.e. node with probe [-50C, 70C])
+        // https://github.com/jongio/thermoworks/blob/main/docs/api-reference.md#devicetype
         service.getCharacteristic(this.platform.Characteristic.CurrentTemperature)
           .setProps({ minValue: -270, maxValue: 1000, minStep: 0.1 })
           .onGet(() => this.handleReadingGet(channel.id));
@@ -66,7 +67,7 @@ export class ThermoworksAccessory {
         .onGet(() => this.lowBattery);
 
       const value = channelReading(channel);
-      const fault = channel.probeFailed || value === undefined;
+      const fault = channel.probeFailed || value === undefined || channel.status === 'NO PROBE';
       this.channelStates.set(channel.id, { value, fault });
       this.channelServices.set(channel.id, service);
       activeServices.add(service);
